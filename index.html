@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+    <title>Frontend Mentor | Advice generator app</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .attribution{
+        position: relative;
+        top: 260px;
+        color: white;
+        font-size: 10px;
+      }
+      .name{
+        font-family: 'Space Grotesk';
+        color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="card" class="card">
+        <p class="title"><span id="adviceid">113 </span></p>
+        <div class="advice" id="advicetext">
+          "It is easy to sit up and take notice, what's difficult is getting up
+          and take action"
+        </div>
+        <img
+          src="./assets/image/pattern-divider-desktop.svg"
+          alt=""
+          class="divider"
+        />
+        <button class="btn" id="btn">
+          <img src="./assets/image/icon-dice.svg" alt="" />
+        </button>
+
+        <div class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+            >Frontend Mentor</a
+          >. Coded by <a href="#" class="name">Oluwapelumi</a>.
+        </div>
+      </div>
+    </div>
+    <script src="./script.js "></script>
+  </body>
+</html>
