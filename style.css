@@ -1,32 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-
-
-body{
+body {
     font-family: "Geist Mono";
-    background-color: hsl(218, 23%, 16%);
+    background-color: hsl(218, 23%, 16%); /* Default dark background */
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.card{
-    background-color: hsl(217, 19%, 24%);
+/* White Mode */
+body.white {
+    background-color: hsl(0, 0%, 95%); /* Light background */
+    color: hsl(217, 19%, 24%); /* Dark text */
+}
+
+.card {
+    background-color: hsl(217, 19%, 24%); /* Default dark card */
     max-width: 469px;
     margin: 0 auto;
     text-align: center;
     padding: 30px;
     position: relative;
     border-radius: 13px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-.title{
-    color:   hsl(150, 100%, 66%);
+
+body.white .card {
+    background-color: hsl(0, 0%, 100%); /* White card in light mode */
+    color: hsl(217, 19%, 24%); /* Dark text */
+}
+
+.title {
+    color: hsl(150, 100%, 66%); /* Green title */
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
@@ -34,42 +46,167 @@ body{
     padding: 14px;
 }
 
-.advice{
+body.white .title {
+    color: hsl(150, 100%, 40%); /* Slightly darker green in light mode */
+}
+
+.advice {
     font-size: 19px;
-    color: white;
+    color: white; /* Default light text */
     letter-spacing: 1.1px;
     margin-bottom: 20px;
     font-weight: 500;
 }
 
-.divider{
+body.white .advice {
+    color: hsl(217, 19%, 24%); /* Dark text in light mode */
+}
+
+.divider {
     width: 90%;
     display: block;
     padding-bottom: 20px;
     margin: 0 auto;
 }
 
-.btn{
+.btn {
     position: absolute;
     left: 50%;
     bottom: -31px;
     transform: translateX(-50%);
-    background-color: hsl(150, 100%, 66%);
+    background-color: hsl(150, 100%, 66%); /* Green button */
     border: none;
     padding: 15px 17px;
     border-radius: 50%;
-    cursor: pointer; 
-    border: none;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
 
 .btn:hover, .btn:focus {
-    box-shadow: 0px 0px 30px 0 rgb(82, 255, 168);
+    box-shadow: 0px 0px 30px 0 rgb(82, 255, 168); /* Green glow */
 }
 
-@media only screen and (max-width: 425px){
-    .card{
+/* Dice rolling animation */
+@keyframes roll {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.rolling {
+    animation: roll 0.5s linear; /* Adjust the duration as needed */
+}
+
+/* Rating stars styling */
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.star {
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc !important; /* Default unselected star color */
+    transition: color 0.2s ease;
+}
+
+.star:hover,
+.star.active {
+    color: #ffcc00; /* Selected star color */
+}
+
+.rating-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: white; /* Default light text */
+}
+
+body.white .rating-text {
+    color: hsl(217, 19%, 24%); /* Dark text in light mode */
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: hsl(150, 100%, 66%); /* Green button */
+    color: hsl(217, 19%, 24%); /* Dark text */
+    border: none;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+.dark-mode-toggle:hover {
+    background-color: hsl(150, 100%, 50%); /* Slightly darker green on hover */
+    transform: scale(1.1);
+}
+
+body.white .dark-mode-toggle {
+    background-color: hsl(217, 19%, 24%); /* Dark button in light mode */
+    color: hsl(150, 100%, 66%); /* Green text */
+}
+
+body.white .dark-mode-toggle:hover {
+    background-color: hsl(217, 19%, 30%); /* Slightly lighter dark on hover */
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 100%; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hsl(150, 100%, 66%); /* Green background */
+    color: hsl(217, 19%, 24%); /* Dark text */
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+/* Bouncing animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+.btn-container:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    animation: bounce 1s infinite; /* Bouncing effect */
+}
+.btn-container {
+    position: relative;
+    top: 120px;
+}
+
+/* Optional: Hide tooltip after button click */
+.btn.clicked + .tooltip {
+    opacity: 0;
+    visibility: hidden;
+    animation: none; /* Stop bouncing */
+}
+
+/* Media Queries for Responsive Design */
+@media only screen and (max-width: 425px) {
+    .card {
         margin: 0 12px;
         padding: 20px;
     }

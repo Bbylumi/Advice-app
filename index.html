@@ -25,6 +25,9 @@
         position: relative;
         top: 260px;
         color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 10px;
       }
       .name{
@@ -45,9 +48,22 @@
           alt=""
           class="divider"
         />
-        <button class="btn" id="btn">
-          <img src="./assets/image/icon-dice.svg" alt="" />
-        </button>
+        <div class="btn-container">
+          <button class="btn" id="btn">
+              <img src="./assets/image/icon-dice.svg" alt="" />
+          </button>
+          <div class="tooltip">Click Me!</div>
+      </div>
+        <div class="rating">
+          <span class="star" data-value="1">⭐</span>
+          <span class="star" data-value="2">⭐</span>
+          <span class="star" data-value="3">⭐</span>
+          <span class="star" data-value="4">⭐</span>
+          <span class="star" data-value="5">⭐</span>
+        </div>
+        <p class="rating-text">Rate this fact:</p>
+      </div>
+      <button id="dark-mode-toggle" class="dark-mode-toggle">🌙</button>
 
         <div class="attribution">
           Challenge by
